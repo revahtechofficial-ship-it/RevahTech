@@ -35,7 +35,7 @@
         .revah-links{ list-style:none; display:flex; flex-direction:column; gap:25px; }
         .revah-links a{ color:white; text-decoration:none; display:flex; align-items:center; gap:10px; font-size:1.1rem; }
         .revah-links a:hover{ color:#b3c2f2; }
-        .revah-arrow{ display:inline-block; transition:transform 0.3s ease; font-size:0.8rem; }
+        .revah-a.revah-arrow{ display: inline-block; transition:transform 0.3s ease; font-size:0.8rem; }
         .revah-submenu{ max-height:0; overflow:hidden; opacity:0; visibility:hidden; transition:all 0.3s ease; margin-left:25px; margin-top:0; }
         .revah-submenu.show-menu{ max-height:300px; opacity:1; visibility:visible; margin-top:10px; }
         .revah-submenu-list{ list-style:none; display:flex; flex-direction:column; gap:15px; padding:10px 0; }
@@ -73,6 +73,7 @@
             margin-bottom: 15px;
             background: linear-gradient(90deg, #ffffff, #60a5fa);
             -webkit-background-clip: text;
+            background-clip: text;
             color: transparent;
             text-shadow: 0 0 40px rgba(96, 165, 250, 0.3);
         }
@@ -100,6 +101,7 @@
         .text-gradient {
             background: linear-gradient(90deg, #60a5fa, #a78bfa);
             -webkit-background-clip: text;
+            background-clip: text;
             color: transparent;
         }
 
@@ -283,7 +285,7 @@
         </div>
 
         <ul class="revah-links">
-            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="about.html">About Us</a></li>
 
             <li>
                 <a href="#" class="revah-toggle" data-target="submenu-services">
@@ -291,9 +293,9 @@
                 </a>
                 <div id="submenu-services" class="revah-submenu">
                     <ul class="revah-submenu-list">
-                        <li><a href="{% url 'service_ai' %}">Artificial Intelligence</a></li>
-                       <li><a href="{% url 'service_app_dev' %}">App Development</a></li>
-                       <li><a href="{% url 'service_web_dev' %}">Website Development</a></li>
+                        <li><a href="service_ai.html">Artificial Intelligence</a></li>
+                        <li><a href="service_app_dev.html">App Development</a></li>
+                        <li><a href="service_web_dev.html">Website Development</a></li>
                     </ul>
                 </div>
             </li>
@@ -304,19 +306,19 @@
                 </a>
                  <div id="submenu-products" class="revah-submenu">
                     <ul class="revah-submenu-list">
-                        <li><a href="{% url 'nexax' %}">NexaX</a></li>
-                        <li><a href="{% url 'nexaschool' %}">Nexa-School</a></li>
+                        <li><a href="nexax.html">NexaX</a></li>
+                        <li><a href="nexaschool.html">CRMSchool</a></li>
                     </ul>
                 </div>
             </li>
 
-            <li><a href="{% url 'team' %}">Our Team</a></li>
-            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
         </ul>
     </div>
 
     <nav>
-        <a href="{% url 'landing' %}">
+        <a href="index.html">
             <img src="images/logo.png" class="logo" alt="Revah Tech Logo">
         </a>
         <div class="menu-container" id="revah-open-btn">
@@ -335,7 +337,7 @@
                 <h2 class="hero-title">Architecting the Future of<br><span class="text-gradient">Edge AI Surveillance</span></h2>
                 <p class="hero-subtitle">An AI-powered edge surveillance platform built for real-time analytics, privacy-first security, and intelligent monitoring. Processing data at the source, not in the cloud.</p>
                 <div class="btn-group">
-                    <a href="{% url 'contact' %}" class="btn-primary">Request Demo →</a>
+                    <a href="contact.html" class="btn-primary">Request Demo →</a>
                 </div>
             </section>
 

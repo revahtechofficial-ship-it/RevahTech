@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexa-School | Coming Soon</title>
+    <title>CRMSchool | Coming Soon</title>
 
     <style>
         /* --- CORE STYLES --- */
@@ -73,6 +73,7 @@
             margin-bottom: 10px;
             background: linear-gradient(90deg, #ffffff, #60a5fa);
             -webkit-background-clip: text;
+            background-clip: text;
             color: transparent;
             letter-spacing: 1px;
         }
@@ -129,7 +130,7 @@
         </div>
 
         <ul class="revah-links">
-            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="about.html">About Us</a></li>
 
             <li>
                 <a href="#" class="revah-toggle" data-target="submenu-services">
@@ -137,9 +138,9 @@
                 </a>
                 <div id="submenu-services" class="revah-submenu">
                     <ul class="revah-submenu-list">
-                        <li><a href="{% url 'service_ai' %}">Artificial Intelligence</a></li>
-                        <li><a href="{% url 'service_app_dev' %}">App Development</a></li>
-                        <li><a href="{% url 'service_web_dev' %}">Website Development</a></li>
+                        <li><a href="service_ai.html">Artificial Intelligence</a></li>
+                        <li><a href="service_app_dev.html">App Development</a></li>
+                        <li><a href="service_web_dev.html">Website Development</a></li>
                     </ul>
                 </div>
             </li>
@@ -150,19 +151,19 @@
                 </a>
                  <div id="submenu-products" class="revah-submenu">
                     <ul class="revah-submenu-list">
-                        <li><a href="{% url 'nexax' %}">NexaX</a></li>
-                        <li><a href="{% url 'nexaschool' %}">Nexa-School</a></li>
+                        <li><a href="nexax.html">NexaX</a></li>
+                        <li><a href="nexaschool.html">CRMSchool</a></li>
                     </ul>
                 </div>
             </li>
 
-            <li><a href="{% url 'team' %}">Our Team</a></li>
-            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
         </ul>
     </div>
 
     <nav>
-        <a href="{% url 'landing' %}">
+        <a href="index.html">
             <img src="images/logo.png" class="logo" alt="Revah Tech Logo">
         </a>
         <div class="menu-container" id="revah-open-btn">
@@ -173,10 +174,10 @@
 
     <main class="coming-soon-main">
         <div class="glass-container">
-            <h1 class="product-name">Nexa-School</h1>
+            <h1 class="product-name">CRMSchool</h1>
             <div class="status-text">Coming Soon</div>
             <p class="description">We are building the ultimate CRM and management ecosystem tailored for modern educational institutions. Stay tuned for the future of school administration.</p>
-            <a href="{% url 'landing' %}" class="btn-back">← Back to Home</a>
+            <a href="index.html" class="btn-back">← Back to Home</a>
         </div>
     </main>
 

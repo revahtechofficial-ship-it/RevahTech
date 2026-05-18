@@ -158,6 +158,11 @@
             flex-wrap:wrap;
         }
 
+        .service-card-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
         .service-card{
             display:flex;
             flex-direction:column;
@@ -235,7 +240,7 @@
 
         <ul class="revah-links">
 
-            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="about.html">About Us</a></li>
 
             <li>
                 <a href="#" class="revah-toggle" data-target="submenu-services">
@@ -245,9 +250,9 @@
 
                 <div id="submenu-services" class="revah-submenu">
                     <ul class="revah-submenu-list">
-                        <li><a href="#">Artificial Intelligence</a></li>
-                        <li><a href="#">App Development</a></li>
-                        <li><a href="#">Website Development</a></li>
+                        <li><a href="service_ai.html">Artificial Intelligence</a></li>
+                        <li><a href="service_app_dev.html">App Development</a></li>
+                        <li><a href="service_web_dev.html">Website Development</a></li>
                     </ul>
                 </div>
             </li>
@@ -260,21 +265,21 @@
 
                  <div id="submenu-products" class="revah-submenu">
                     <ul class="revah-submenu-list">
-                        <li><a href="#">NexaX</a></li>
-                        <li><a href="#">CRMSchool</a></li>
+                        <li><a href="nexax.html">NexaX</a></li>
+                        <li><a href="nexaschool.html">CRMSchool</a></li>
                     </ul>
                 </div>
             </li>
 
-            <li><a href="#">Our Team</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
 
         </ul>
 
     </div>
 
     <nav>
-        <a href="{% url 'landing' %}">
+        <a href="index.html">
             <img src="images/logo.png" class="logo">
         </a>
 
@@ -290,26 +295,32 @@
 
         <div class="services-grid">
 
-            <div class="service-card">
-                <div class="service-img-wrapper">
-                    <img src="images/service_ai.png" alt="AI">
+            <a href="service_ai.html" class="service-card-link">
+                <div class="service-card">
+                    <div class="service-img-wrapper">
+                        <img src="images/service_ai.png" alt="AI">
+                    </div>
+                    <h3 class="service-title">Artificial Intelligence</h3>
                 </div>
-                <h3 class="service-title">Artificial Intelligence</h3>
-            </div>
+            </a>
             
-            <div class="service-card">
-                <div class="service-img-wrapper">
-                    <img src="images/service_app.png" alt="App Development">
+            <a href="service_app_dev.html" class="service-card-link">
+                <div class="service-card">
+                    <div class="service-img-wrapper">
+                        <img src="images/service_app.png" alt="App Development">
+                    </div>
+                    <h3 class="service-title">App Development</h3>
                 </div>
-                <h3 class="service-title">App Development</h3>
-            </div>
+            </a>
 
-            <div class="service-card">
-                <div class="service-img-wrapper">
-                    <img src="images/service_web.png" alt="Web Development">
+            <a href="service_web_dev.html" class="service-card-link">
+                <div class="service-card">
+                    <div class="service-img-wrapper">
+                        <img src="images/service_web.png" alt="Web Development">
+                    </div>
+                    <h3 class="service-title">Web Development</h3>
                 </div>
-                <h3 class="service-title">Web Development</h3>
-            </div>
+            </a>
 
         </div>
 

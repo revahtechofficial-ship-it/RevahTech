@@ -89,6 +89,7 @@
         .text-gradient {
             background: linear-gradient(90deg, #60a5fa, #a78bfa);
             -webkit-background-clip: text;
+            background-clip: text;
             color: transparent;
         }
 
@@ -207,7 +208,7 @@
         </div>
 
         <ul class="revah-links">
-            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="about.html">About Us</a></li>
 
             <li>
                 <a href="#" class="revah-toggle" data-target="submenu-services">
@@ -215,9 +216,9 @@
                 </a>
                 <div id="submenu-services" class="revah-submenu">
                     <ul class="revah-submenu-list">
-                        <li><a href="{% url 'service_ai' %}">Artificial Intelligence</a></li>
-                        <li><a href="{% url 'service_app_dev' %}">App Development</a></li>
-                        <li><a href="{% url 'service_web_dev' %}">Website Development</a></li>
+                        <li><a href="service_ai.html">Artificial Intelligence</a></li>
+                        <li><a href="service_app_dev.html">App Development</a></li>
+                        <li><a href="service_web_dev.html">Website Development</a></li>
                     </ul>
                 </div>
             </li>
@@ -228,19 +229,19 @@
                 </a>
                  <div id="submenu-products" class="revah-submenu">
                     <ul class="revah-submenu-list">
-                        <li><a href="{% url 'nexax' %}">NexaX</a></li>
-                        <li><a href="{% url 'nexaschool' %}">CRMSchool</a></li>
+                        <li><a href="nexax.html">NexaX</a></li>
+                        <li><a href="nexaschool.html">CRMSchool</a></li>
                     </ul>
                 </div>
             </li>
 
-            <li><a href="{% url 'team' %}">Our Team</a></li>
-            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
         </ul>
     </div>
 
     <nav>
-        <a href="{% url 'landing' %}">
+        <a href="index.html">
             <img src="images/logo.png" class="logo" alt="Revah Tech Logo">
         </a>
         <div class="menu-container" id="revah-open-btn">
@@ -297,7 +298,7 @@
             <section class="cta-section">
                 <h2 class="cta-title">Ready to build intelligent systems?</h2>
                 <p style="color: #cbd5e1; margin-bottom: 10px;">Let's discuss how customized AI can accelerate your business.</p>
-                <a href="{% url 'contact' %}" class="btn-primary">Consult With Our Experts</a>
+                <a href="contact.html" class="btn-primary">Consult With Our Experts</a>
             </section>
 
         </div>

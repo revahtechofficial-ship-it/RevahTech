@@ -107,7 +107,7 @@
         </div>
 
         <ul class="revah-links">
-            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="about.html">About Us</a></li>
 
             <li>
                 <a href="#" class="revah-toggle" data-target="submenu-services">
@@ -115,9 +115,9 @@
                 </a>
                 <div id="submenu-services" class="revah-submenu">
                     <ul class="revah-submenu-list">
-                        <li><a href="{% url 'service_ai' %}">Artificial Intelligence</a></li>
-                        <li><a href="{% url 'service_app_dev' %}">App Development</a></li>
-                        <li><a href="{% url 'service_web_dev' %}">Website Development</a></li>
+                        <li><a href="service_ai.html">Artificial Intelligence</a></li>
+                        <li><a href="service_app_dev.html">App Development</a></li>
+                        <li><a href="service_web_dev.html">Website Development</a></li>
                     </ul>
                 </div>
             </li>
@@ -128,19 +128,19 @@
                 </a>
                  <div id="submenu-products" class="revah-submenu">
                     <ul class="revah-submenu-list">
-                        <li><a href="{% url 'nexax' %}">NexaX</a></li>
-                        <li><a href="{% url 'nexaschool' %}">Nexa-School</a></li>
+                        <li><a href="nexax.html">NexaX</a></li>
+                        <li><a href="nexaschool.html">CRMSchool</a></li>
                     </ul>
                 </div>
             </li>
 
-            <li><a href="{% url 'team' %}">Our Team</a></li>
-            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
         </ul>
     </div>
 
     <nav>
-        <a href="{% url 'landing' %}">
+        <a href="index.html">
             <img src="images/logo.png" class="logo" alt="Revah Tech Logo">
         </a>
         <div class="menu-container" id="revah-open-btn">
@@ -183,6 +183,7 @@
         const allSubmenus = document.querySelectorAll('.revah-submenu');
         const allArrows = document.querySelectorAll('.revah-arrow');
 
+        // Close all submenus and reset arrows to point Right
         function closeAllSubmenus(){
             allSubmenus.forEach(menu => {
                 menu.classList.remove('show-menu');
@@ -192,15 +193,18 @@
             });
         }
 
+        // Open Sidebar
         openBtn.addEventListener('click', () => {
             sidebar.classList.add('active');
         });
 
+        // Close Sidebar and reset everything
         closeBtn.addEventListener('click', () => {
             sidebar.classList.remove('active');
             closeAllSubmenus();
         });
 
+        // Accordion functionality for submenus
         toggles.forEach(toggle => {
             toggle.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -208,8 +212,10 @@
                 const arrow = toggle.querySelector('.revah-arrow');
                 const isOpen = targetMenu.classList.contains('show-menu');
 
+                // Force close all first
                 closeAllSubmenus();
 
+                // If it wasn't open, open it and rotate arrow Down
                 if(!isOpen){
                     targetMenu.classList.add('show-menu');
                     arrow.style.transform = 'rotate(90deg)';
