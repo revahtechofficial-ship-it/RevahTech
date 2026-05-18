@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexaX - Edge AI Surveillance | Revah Tech</title>
+
+    <style>
+        /* --- CORE STYLES --- */
+        *{ margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
+        
+        body{
+            background-color:#1a3673;
+            background-image:url('images/bg_pattern.png');
+            background-size:cover;
+            background-position:center;
+            background-attachment: fixed;
+            color:white;
+            height:100vh;
+            overflow:hidden;
+            display:flex;
+            flex-direction:column;
+        }
+
+        nav{ display:flex; justify-content:space-between; align-items:center; padding:40px 80px; }
+        .logo{ height:45px; }
+        .menu-container{ display:flex; align-items:center; gap:10px; cursor:pointer; font-size:1.1rem; font-weight:600; }
+        .menu-icon{ height:24px; }
+
+        /* --- BULLETPROOF SIDEBAR --- */
+        #revah-sidebar{ position:fixed; top:0; right:-1000px; width:300px; height:100vh; background:#112554; transition:0.4s ease; z-index:1000; padding:40px; box-shadow:-5px 0 15px rgba(0,0,0,0.5); }
+        #revah-sidebar.active{ right:0; }
+        .sidebar-header{ display:flex; justify-content:flex-end; margin-bottom:60px; }
+        .close-btn{ display:flex; align-items:center; gap:10px; cursor:pointer; font-weight:600; }
+        .revah-links{ list-style:none; display:flex; flex-direction:column; gap:25px; }
+        .revah-links a{ color:white; text-decoration:none; display:flex; align-items:center; gap:10px; font-size:1.1rem; }
+        .revah-links a:hover{ color:#b3c2f2; }
+        .revah-arrow{ display:inline-block; transition:transform 0.3s ease; font-size:0.8rem; }
+        .revah-submenu{ max-height:0; overflow:hidden; opacity:0; visibility:hidden; transition:all 0.3s ease; margin-left:25px; margin-top:0; }
+        .revah-submenu.show-menu{ max-height:300px; opacity:1; visibility:visible; margin-top:10px; }
+        .revah-submenu-list{ list-style:none; display:flex; flex-direction:column; gap:15px; padding:10px 0; }
+        .revah-submenu-list a{ color:#d1d8f0; font-size:1rem; }
+
+        /* --- NEXAX PAGE SPECIFIC STYLES --- */
+        .nexax-main {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 80px 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .nexax-container {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: 20px 0 40px 0;
+        }
+
+        /* NEW: Massive Project Title */
+        .nexax-logo-text {
+            font-size: 5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #ffffff, #60a5fa);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 40px rgba(96, 165, 250, 0.3);
+        }
+
+        .nexax-badge {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            color: #60a5fa;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            line-height: 1.6;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #3b82f6, #6366f1);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(17, 37, 84, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(96, 165, 250, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(96, 165, 250, 0.05);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        /* Features Grid */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .feature-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: #60a5fa;
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .feature-desc {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
+
+        /* Comparison Section */
+        .comparison-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .vs-card {
+            padding: 40px;
+        }
+
+        .vs-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .vs-list {
+            list-style: none;
+        }
+
+        .vs-list li {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .vs-list li svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .check-icon { stroke: #4ade80; }
+        .cross-icon { stroke: #f87171; }
+        
+        .nexax-glow { border: 1px solid rgba(96, 165, 250, 0.5); box-shadow: 0 0 30px rgba(59, 130, 246, 0.15); }
+
+        @media(max-width: 900px){
+            nav{ padding:25px; }
+            .nexax-main{ padding:20px; }
+            .nexax-logo-text { font-size: 3.5rem; }
+            .hero-title{ font-size: 2.2rem; }
+            .stats-bar{ grid-template-columns: 1fr 1fr; }
+            .comparison-wrapper{ grid-template-columns: 1fr; }
+            #revah-sidebar{ width:100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="revah-sidebar">
+        <div class="sidebar-header">
+            <div class="close-btn" id="revah-close-btn">
+                <img src="images/menu_icon.png" class="menu-icon" alt="Close">
+                <span>Close</span>
+            </div>
+        </div>
+
+        <ul class="revah-links">
+            <li><a href="{% url 'about' %}">About Us</a></li>
+
+            <li>
+                <a href="#" class="revah-toggle" data-target="submenu-services">
+                    <span class="revah-arrow">▶</span> Services
+                </a>
+                <div id="submenu-services" class="revah-submenu">
+                    <ul class="revah-submenu-list">
+                        <li><a href="{% url 'service_ai' %}">Artificial Intelligence</a></li>
+                       <li><a href="{% url 'service_app_dev' %}">App Development</a></li>
+                       <li><a href="{% url 'service_web_dev' %}">Website Development</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <a href="#" class="revah-toggle" data-target="submenu-products">
+                    <span class="revah-arrow">▶</span> Products
+                </a>
+                 <div id="submenu-products" class="revah-submenu">
+                    <ul class="revah-submenu-list">
+                        <li><a href="{% url 'nexax' %}">NexaX</a></li>
+                        <li><a href="{% url 'nexaschool' %}">Nexa-School</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li><a href="{% url 'team' %}">Our Team</a></li>
+            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <nav>
+        <a href="{% url 'landing' %}">
+            <img src="images/logo.png" class="logo" alt="Revah Tech Logo">
+        </a>
+        <div class="menu-container" id="revah-open-btn">
+            <img src="images/menu_icon.png" class="menu-icon" alt="Menu">
+            <span>Menu</span>
+        </div>
+    </nav>
+
+    <main class="nexax-main">
+        <div class="nexax-container">
+            
+            <section class="hero-section">
+                <div class="nexax-logo-text">NexaX</div>
+                
+                <div class="nexax-badge">INTELLIGENT SECURE EDGE AI</div>
+                <h2 class="hero-title">Architecting the Future of<br><span class="text-gradient">Edge AI Surveillance</span></h2>
+                <p class="hero-subtitle">An AI-powered edge surveillance platform built for real-time analytics, privacy-first security, and intelligent monitoring. Processing data at the source, not in the cloud.</p>
+                <div class="btn-group">
+                    <a href="{% url 'contact' %}" class="btn-primary">Request Demo →</a>
+                </div>
+            </section>
+
+            <section class="stats-bar glass-card">
+                <div class="stat-item">
+                    <div class="stat-value">6 TOPS</div>
+                    <div class="stat-label">AI Compute Power</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">&lt;5ms</div>
+                    <div class="stat-label">Ultra-Low Latency</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">97%+</div>
+                    <div class="stat-label">LPR Accuracy</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Local Processing</div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Core AI Features</h2>
+                <div class="features-grid">
+                    
+                    <div class="glass-card">
+                        <div class="feature-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                        </div>
+                        <h3 class="feature-title">Nepali LPR</h3>
+                        <p class="feature-desc">Devanagari OCR-powered License Plate Recognition optimized specifically for Nepalese formats and conditions.</p>
+                    </div>
+
+                    <div class="glass-card">
+                        <div class="feature-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h3 class="feature-title">Facial Recognition</h3>
+                        <p class="feature-desc">Real-time identity verification and smart alerts running instantly on the edge hardware.</p>
+                    </div>
+
+                    <div class="glass-card">
+                        <div class="feature-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        </div>
+                        <h3 class="feature-title">Object Tracking</h3>
+                        <p class="feature-desc">DeepSORT + trajectory analysis for precise monitoring of vehicles, packages, and movement patterns.</p>
+                    </div>
+
+                    <div class="glass-card">
+                        <div class="feature-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                        </div>
+                        <h3 class="feature-title">Privacy-First</h3>
+                        <p class="feature-desc">Zero cloud dependency. All video streams and AI inference are processed and contained locally.</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Built Different. Built for the Future.</h2>
+                <div class="comparison-wrapper">
+                    
+                    <div class="glass-card vs-card nexax-glow">
+                        <h3><span class="text-gradient">NexaX</span> System</h3>
+                        <ul class="vs-list">
+                            <li><svg class="check-icon" fill="none" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Local Edge AI Processing</li>
+                            <li><svg class="check-icon" fill="none" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Nepal-Optimized Recognition</li>
+                            <li><svg class="check-icon" fill="none" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Real-Time Instant Analytics</li>
+                            <li><svg class="check-icon" fill="none" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> No Recurring Cloud Fees</li>
+                            <li><svg class="check-icon" fill="none" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Absolute Data Privacy</li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-card vs-card">
+                        <h3 style="color: #94a3b8;">Traditional CCTV</h3>
+                        <ul class="vs-list" style="color: #94a3b8;">
+                            <li><svg class="cross-icon" fill="none" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg> Passive Recording Only</li>
+                            <li><svg class="cross-icon" fill="none" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg> Generic Global Systems</li>
+                            <li><svg class="cross-icon" fill="none" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg> Delayed Manual Detection</li>
+                            <li><svg class="cross-icon" fill="none" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg> Expensive Subscriptions</li>
+                            <li><svg class="cross-icon" fill="none" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg> Cloud Vulnerabilities</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sidebar = document.getElementById('revah-sidebar');
+        const openBtn = document.getElementById('revah-open-btn');
+        const closeBtn = document.getElementById('revah-close-btn');
+        const toggles = document.querySelectorAll('.revah-toggle');
+        const allSubmenus = document.querySelectorAll('.revah-submenu');
+        const allArrows = document.querySelectorAll('.revah-arrow');
+
+        function closeAllSubmenus(){
+            allSubmenus.forEach(menu => menu.classList.remove('show-menu'));
+            allArrows.forEach(arrow => arrow.style.transform = 'rotate(0deg)');
+        }
+
+        openBtn.addEventListener('click', () => sidebar.classList.add('active'));
+        
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            closeAllSubmenus();
+        });
+
+        toggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetMenu = document.getElementById(toggle.getAttribute('data-target'));
+                const arrow = toggle.querySelector('.revah-arrow');
+                const isOpen = targetMenu.classList.contains('show-menu');
+                closeAllSubmenus();
+                if(!isOpen){
+                    targetMenu.classList.add('show-menu');
+                    arrow.style.transform = 'rotate(90deg)';
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>

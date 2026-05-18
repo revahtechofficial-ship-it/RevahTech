@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team | Revah Tech</title>
+
+    <style>
+        /* --- CORE STYLES --- */
+        *{ margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
+        
+        body{
+            background-color:#1a3673;
+            background-image:url('images/bg_pattern.png');
+            background-size:cover;
+            background-position:center;
+            color:white;
+            height:100vh;
+            overflow:hidden;
+            display:flex;
+            flex-direction:column;
+        }
+
+        nav{ display:flex; justify-content:space-between; align-items:center; padding:40px 80px; }
+        .logo{ height:45px; }
+        .menu-container{ display:flex; align-items:center; gap:10px; cursor:pointer; font-size:1.1rem; font-weight:600; }
+        .menu-icon{ height:24px; }
+
+        /* --- BULLETPROOF SIDEBAR --- */
+        #revah-sidebar{ position:fixed; top:0; right:-1000px; width:300px; height:100vh; background:#112554; transition:0.4s ease; z-index:1000; padding:40px; box-shadow:-5px 0 15px rgba(0,0,0,0.5); }
+        #revah-sidebar.active{ right:0; }
+        .sidebar-header{ display:flex; justify-content:flex-end; margin-bottom:60px; }
+        .close-btn{ display:flex; align-items:center; gap:10px; cursor:pointer; font-weight:600; }
+        .revah-links{ list-style:none; display:flex; flex-direction:column; gap:25px; }
+        .revah-links a{ color:white; text-decoration:none; display:flex; align-items:center; gap:10px; font-size:1.1rem; }
+        .revah-links a:hover{ color:#b3c2f2; }
+        .revah-arrow{ display:inline-block; transition:transform 0.3s ease; font-size:0.8rem; }
+        .revah-submenu{ max-height:0; overflow:hidden; opacity:0; visibility:hidden; transition:all 0.3s ease; margin-left:25px; margin-top:0; }
+        .revah-submenu.show-menu{ max-height:300px; opacity:1; visibility:visible; margin-top:10px; }
+        .revah-submenu-list{ list-style:none; display:flex; flex-direction:column; gap:15px; padding:10px 0; }
+        .revah-submenu-list a{ color:#d1d8f0; font-size:1rem; }
+
+        /* --- TEAM PAGE SPECIFIC STYLES --- */
+        .team-main {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 80px 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .team-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            max-width: 1100px; 
+        }
+
+        /* FIXED: Simplified card to just hold your baked image perfectly */
+        .team-card {
+            width: 280px;
+            border-radius: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* FIXED: Removed object-fit so it doesn't crop your image */
+        .team-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+        }
+
+        @media(max-width:768px){
+            nav{ padding:25px; }
+            .team-main{ padding:20px; }
+            .page-title{ font-size:2.5rem; }
+            #revah-sidebar{ width:100%; }
+            .team-card{ width:100%; max-width:320px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="revah-sidebar">
+        <div class="sidebar-header">
+            <div class="close-btn" id="revah-close-btn">
+                <img src="images/menu_icon.png" class="menu-icon" alt="Close">
+                <span>Close</span>
+            </div>
+        </div>
+
+        <ul class="revah-links">
+            <li><a href="{% url 'about' %}">About Us</a></li>
+
+            <li>
+                <a href="#" class="revah-toggle" data-target="submenu-services">
+                    <span class="revah-arrow">▶</span> Services
+                </a>
+                <div id="submenu-services" class="revah-submenu">
+                    <ul class="revah-submenu-list">
+                        <li><a href="{% url 'service_ai' %}">Artificial Intelligence</a></li>
+                        <li><a href="{% url 'service_app_dev' %}">App Development</a></li>
+                        <li><a href="{% url 'service_web_dev' %}">Website Development</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <a href="#" class="revah-toggle" data-target="submenu-products">
+                    <span class="revah-arrow">▶</span> Products
+                </a>
+                 <div id="submenu-products" class="revah-submenu">
+                    <ul class="revah-submenu-list">
+                        <li><a href="{% url 'nexax' %}">NexaX</a></li>
+                        <li><a href="{% url 'nexaschool' %}">Nexa-School</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li><a href="{% url 'team' %}">Our Team</a></li>
+            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <nav>
+        <a href="{% url 'landing' %}">
+            <img src="images/logo.png" class="logo" alt="Revah Tech Logo">
+        </a>
+        <div class="menu-container" id="revah-open-btn">
+            <img src="images/menu_icon.png" class="menu-icon" alt="Menu">
+            <span>Menu</span>
+        </div>
+    </nav>
+
+    <main class="team-main">
+        <h1 class="page-title">Our Team</h1>
+        
+        <div class="team-grid">
+            
+            <div class="team-card">
+                <img src="images/team_ishan.png" alt="Ishan Dangal">
+            </div>
+
+            <div class="team-card">
+                <img src="images/team_pratik.png" alt="Pratik Mishra">
+            </div>
+
+            <div class="team-card">
+                <img src="images/team_abheejan.png" alt="Abheejan Lal Shrestha">
+            </div>
+
+            <div class="team-card">
+                <img src="images/team_quamar.png" alt="Mohammad Quamar Nasim">
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const sidebar = document.getElementById('revah-sidebar');
+        const openBtn = document.getElementById('revah-open-btn');
+        const closeBtn = document.getElementById('revah-close-btn');
+        const toggles = document.querySelectorAll('.revah-toggle');
+        const allSubmenus = document.querySelectorAll('.revah-submenu');
+        const allArrows = document.querySelectorAll('.revah-arrow');
+
+        function closeAllSubmenus(){
+            allSubmenus.forEach(menu => {
+                menu.classList.remove('show-menu');
+            });
+            allArrows.forEach(arrow => {
+                arrow.style.transform = 'rotate(0deg)';
+            });
+        }
+
+        openBtn.addEventListener('click', () => {
+            sidebar.classList.add('active');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            closeAllSubmenus();
+        });
+
+        toggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetMenu = document.getElementById(toggle.getAttribute('data-target'));
+                const arrow = toggle.querySelector('.revah-arrow');
+                const isOpen = targetMenu.classList.contains('show-menu');
+
+                closeAllSubmenus();
+
+                if(!isOpen){
+                    targetMenu.classList.add('show-menu');
+                    arrow.style.transform = 'rotate(90deg)';
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
