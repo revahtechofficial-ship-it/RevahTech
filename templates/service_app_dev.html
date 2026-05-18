@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +11,7 @@
         
         body{
             background-color:#1a3673;
-            background-image:url('{% static "images/bg_pattern.png" %}');
+            background-image:url('images/bg_pattern.png');
             background-size:cover;
             background-position:center;
             background-attachment: fixed;
@@ -90,6 +89,7 @@
         .text-gradient {
             background: linear-gradient(90deg, #38bdf8, #818cf8);
             -webkit-background-clip: text;
+            background-clip: text;
             color: transparent;
         }
 
@@ -202,13 +202,13 @@
     <div id="revah-sidebar">
         <div class="sidebar-header">
             <div class="close-btn" id="revah-close-btn">
-                <img src="{% static 'images/menu_icon.png' %}" class="menu-icon" alt="Close">
+                <img src="images/menu_icon.png" class="menu-icon" alt="Close">
                 <span>Close</span>
             </div>
         </div>
 
         <ul class="revah-links">
-            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="about.html">About Us</a></li>
 
             <li>
                 <a href="#" class="revah-toggle" data-target="submenu-services">
@@ -216,9 +216,9 @@
                 </a>
                 <div id="submenu-services" class="revah-submenu">
                     <ul class="revah-submenu-list">
-                        <li><a href="{% url 'service_ai' %}">Artificial Intelligence</a></li>
-                        <li><a href="{% url 'service_app_dev' %}">App Development</a></li>
-                        <li><a href="{% url 'service_web_dev' %}">Website Development</a></li>
+                        <li><a href="service_ai.html">Artificial Intelligence</a></li>
+                        <li><a href="service_app_dev.html">App Development</a></li>
+                        <li><a href="service_web_dev.html">Website Development</a></li>
                     </ul>
                 </div>
             </li>
@@ -229,23 +229,23 @@
                 </a>
                  <div id="submenu-products" class="revah-submenu">
                     <ul class="revah-submenu-list">
-                        <li><a href="{% url 'nexax' %}">NexaX</a></li>
-                        <li><a href="{% url 'nexaschool' %}">CRMSchool</a></li>
+                        <li><a href="nexax.html">NexaX</a></li>
+                        <li><a href="nexaschool.html">CRMSchool</a></li>
                     </ul>
                 </div>
             </li>
 
-            <li><a href="{% url 'team' %}">Our Team</a></li>
-            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
         </ul>
     </div>
 
     <nav>
-        <a href="{% url 'landing' %}">
-            <img src="{% static 'images/logo.png' %}" class="logo" alt="Revah Tech Logo">
+        <a href="landing.html">
+            <img src="images/logo.png" class="logo" alt="Revah Tech Logo">
         </a>
         <div class="menu-container" id="revah-open-btn">
-            <img src="{% static 'images/menu_icon.png' %}" class="menu-icon" alt="Menu">
+            <img src="images/menu_icon.png" class="menu-icon" alt="Menu">
             <span>Menu</span>
         </div>
     </nav>
@@ -257,7 +257,7 @@
                 <div class="service-badge">Cross-Platform Engineering</div>
                 <h1 class="hero-title">Seamless Digital <br><span class="text-gradient">Experiences</span></h1>
                 <p class="hero-subtitle">We engineer mobile and web applications that combine stunning UI with resilient performance. From high-growth startups to enterprise systems, we build for scale.</p>
-                <a href="{% url 'contact' %}" class="btn-primary">Start Your Project</a>
+                <a href="contact.html" class="btn-primary">Start Your Project</a>
             </section>
 
             <section class="capabilities-grid">

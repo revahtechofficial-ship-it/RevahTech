@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +11,7 @@
         
         body{
             background-color:#1a3673;
-            background-image:url('{% static "images/bg_pattern.png" %}');
+            background-image:url('images/bg_pattern.png');
             background-size:cover;
             background-position:center;
             background-attachment: fixed;
@@ -90,6 +89,7 @@
         .text-gradient {
             background: linear-gradient(90deg, #60a5fa, #a78bfa);
             -webkit-background-clip: text;
+            background-clip: text;
             color: transparent;
         }
 
@@ -202,13 +202,13 @@
     <div id="revah-sidebar">
         <div class="sidebar-header">
             <div class="close-btn" id="revah-close-btn">
-                <img src="{% static 'images/menu_icon.png' %}" class="menu-icon" alt="Close">
+                <img src="images/menu_icon.png" class="menu-icon" alt="Close">
                 <span>Close</span>
             </div>
         </div>
 
         <ul class="revah-links">
-            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="about.html">About Us</a></li>
 
             <li>
                 <a href="#" class="revah-toggle" data-target="submenu-services">
@@ -216,9 +216,9 @@
                 </a>
                 <div id="submenu-services" class="revah-submenu">
                     <ul class="revah-submenu-list">
-                        <li><a href="{% url 'service_ai' %}">Artificial Intelligence</a></li>
-                        <li><a href="{% url 'service_app_dev' %}">App Development</a></li>
-                        <li><a href="{% url 'service_web_dev' %}">Website Development</a></li>
+                        <li><a href="service_ai.html">Artificial Intelligence</a></li>
+                        <li><a href="service_app_dev.html">App Development</a></li>
+                        <li><a href="service_web_dev.html">Website Development</a></li>
                     </ul>
                 </div>
             </li>
@@ -229,23 +229,23 @@
                 </a>
                  <div id="submenu-products" class="revah-submenu">
                     <ul class="revah-submenu-list">
-                        <li><a href="{% url 'nexax' %}">NexaX</a></li>
-                        <li><a href="{% url 'nexaschool' %}">CRMSchool</a></li>
+                        <li><a href="nexax.html">NexaX</a></li>
+                        <li><a href="nexaschool.html">CRMSchool</a></li>
                     </ul>
                 </div>
             </li>
 
-            <li><a href="{% url 'team' %}">Our Team</a></li>
-            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
         </ul>
     </div>
 
     <nav>
-        <a href="{% url 'landing' %}">
-            <img src="{% static 'images/logo.png' %}" class="logo" alt="Revah Tech Logo">
+        <a href="landing.html">
+            <img src="images/logo.png" class="logo" alt="Revah Tech Logo">
         </a>
         <div class="menu-container" id="revah-open-btn">
-            <img src="{% static 'images/menu_icon.png' %}" class="menu-icon" alt="Menu">
+            <img src="images/menu_icon.png" class="menu-icon" alt="Menu">
             <span>Menu</span>
         </div>
     </nav>
@@ -287,7 +287,7 @@
 
                 <div class="glass-card">
                     <div class="icon-wrapper">
-                        <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.443.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                     </div>
                     <h3 class="card-title">AI System Architecture</h3>
                     <p class="card-desc">Full-stack integration of AI models into your existing software ecosystems. We handle model training, quantization (TensorRT, ONNX), API development, and secure deployment architectures.</p>
@@ -298,7 +298,7 @@
             <section class="cta-section">
                 <h2 class="cta-title">Ready to build intelligent systems?</h2>
                 <p style="color: #cbd5e1; margin-bottom: 10px;">Let's discuss how customized AI can accelerate your business.</p>
-                <a href="{% url 'contact' %}" class="btn-primary">Consult With Our Experts</a>
+                <a href="contact.html" class="btn-primary">Consult With Our Experts</a>
             </section>
 
         </div>
