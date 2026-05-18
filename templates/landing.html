@@ -1,0 +1,326 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revah Tech | Empowering your Vision</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Inter',sans-serif;
+        }
+
+        body{
+            background-color:#1a3673;
+            background-image:url('{% static "images/bg_pattern.png" %}');
+            background-size:cover;
+            background-position:center;
+            color:white;
+            height:100vh;
+            overflow:hidden;
+            display:flex;
+            flex-direction:column;
+        }
+
+        nav{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:40px 80px;
+        }
+
+        .logo{
+            height:45px;
+        }
+
+        .menu-container{
+            display:flex;
+            align-items:center;
+            gap:10px;
+            cursor:pointer;
+            font-size:1.1rem;
+            font-weight:600;
+        }
+
+        .menu-icon{
+            height:24px;
+        }
+
+        /* --- LANDING PAGE MAIN CONTENT --- */
+        main{
+            flex:1;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+            padding:20px;
+        }
+
+        h1{
+            font-size:3.5rem;
+            margin-bottom:20px;
+        }
+
+        h2{
+            font-size:1.8rem;
+            font-weight:400;
+            line-height:1.5;
+            margin-bottom:50px;
+        }
+
+        .btn-discover{
+            background:white;
+            color:#1a3673;
+            padding:15px 40px;
+            border-radius:30px;
+            text-decoration:none;
+            font-weight:600;
+            transition:0.3s ease;
+        }
+
+        .btn-discover:hover{
+            transform:translateY(-3px);
+            box-shadow:0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        /* --- BULLETPROOF SIDEBAR --- */
+
+        #revah-sidebar{
+            position:fixed;
+            top:0;
+            right:-1000px;
+            width:300px;
+            height:100vh;
+            background:#112554;
+            transition:0.4s ease;
+            z-index:1000;
+            padding:40px;
+            box-shadow:-5px 0 15px rgba(0,0,0,0.5);
+        }
+
+        #revah-sidebar.active{
+            right:0;
+        }
+
+        .sidebar-header{
+            display:flex;
+            justify-content:flex-end;
+            margin-bottom:60px;
+        }
+
+        .close-btn{
+            display:flex;
+            align-items:center;
+            gap:10px;
+            cursor:pointer;
+            font-weight:600;
+        }
+
+        .revah-links{
+            list-style:none;
+            display:flex;
+            flex-direction:column;
+            gap:25px;
+        }
+
+        .revah-links a{
+            color:white;
+            text-decoration:none;
+            display:flex;
+            align-items:center;
+            gap:10px;
+            font-size:1.1rem;
+        }
+
+        .revah-links a:hover{
+            color:#b3c2f2;
+        }
+
+        .revah-arrow{
+            display:inline-block;
+            transition:transform 0.3s ease;
+            font-size:0.8rem;
+        }
+        
+        /* --- ACCORDION SUBMENU --- */
+        .revah-submenu{
+            max-height:0;
+            overflow:hidden;
+            opacity:0;
+            visibility:hidden;
+            transition:all 0.3s ease;
+            margin-left:25px;
+            margin-top:0;
+        }
+
+        .revah-submenu.show-menu{
+            max-height:300px;
+            opacity:1;
+            visibility:visible;
+            margin-top:10px;
+        }
+
+        .revah-submenu-list{
+            list-style:none;
+            display:flex;
+            flex-direction:column;
+            gap:15px;
+            padding:10px 0;
+        }
+
+        .revah-submenu-list a{
+            color:#d1d8f0;
+            font-size:1rem;
+        }
+
+        @media(max-width:768px){
+            nav{
+                padding:25px;
+            }
+            h1{
+                font-size:2.4rem;
+            }
+            h2{
+                font-size:1.2rem;
+            }
+            #revah-sidebar{
+                width:100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="revah-sidebar">
+
+        <div class="sidebar-header">
+            <div class="close-btn" id="revah-close-btn">
+                <img src="{% static 'images/menu_icon.png' %}" class="menu-icon" alt="Close">
+                <span>Close</span>
+            </div>
+        </div>
+
+        <ul class="revah-links">
+
+            <li><a href="{% url 'about' %}">About Us</a></li>
+
+            <li>
+                <a href="#" class="revah-toggle" data-target="submenu-services">
+                    <span class="revah-arrow">▶</span>
+                    Services
+                </a>
+
+                <div id="submenu-services" class="revah-submenu">
+                    <ul class="revah-submenu-list">
+                        <li><a href="{% url 'service_ai' %}">Artificial Intelligence</a></li>
+                        <li><a href="{% url 'service_app_dev' %}">App Development</a></li>
+                       <li><a href="{% url 'service_web_dev' %}">Website Development</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <a href="#" class="revah-toggle" data-target="submenu-products">
+                    <span class="revah-arrow">▶</span>
+                    Products
+                </a>
+
+                 <div id="submenu-products" class="revah-submenu">
+                    <ul class="revah-submenu-list">
+                        <li><a href="{% url 'nexax' %}">NexaX</a></li>
+                        <li><a href="{% url 'nexaschool' %}">Nexa-School</a></li>
+                    </ul>
+                </div>
+            </li>
+
+           <li><a href="{% url 'team' %}">Our Team</a></li>
+            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+
+        </ul>
+
+    </div>
+
+    <nav>
+        <a href="{% url 'landing' %}">
+            <img src="{% static 'images/logo.png' %}" class="logo" alt="Revah Tech Logo">
+        </a>
+
+        <div class="menu-container" id="revah-open-btn">
+            <img src="{% static 'images/menu_icon.png' %}" class="menu-icon" alt="Menu">
+            <span>Menu</span>
+        </div>
+    </nav>
+
+    <main>
+        <h1>Empowering your Vision</h1>
+        <h2>
+            Delivering Innovative Technological
+            <br>
+            Solutions
+        </h2>
+       <a href="{% url 'about' %}" class="btn-discover">
+            Discover More
+        </a>
+    </main>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const sidebar = document.getElementById('revah-sidebar');
+        const openBtn = document.getElementById('revah-open-btn');
+        const closeBtn = document.getElementById('revah-close-btn');
+        const toggles = document.querySelectorAll('.revah-toggle');
+        const allSubmenus = document.querySelectorAll('.revah-submenu');
+        const allArrows = document.querySelectorAll('.revah-arrow');
+
+        // Close all submenus and reset arrows to point Right
+        function closeAllSubmenus(){
+            allSubmenus.forEach(menu => {
+                menu.classList.remove('show-menu');
+            });
+
+            allArrows.forEach(arrow => {
+                arrow.style.transform = 'rotate(0deg)';
+            });
+        }
+
+        // Open Sidebar
+        openBtn.addEventListener('click', () => {
+            sidebar.classList.add('active');
+        });
+
+        // Close Sidebar and reset everything
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            closeAllSubmenus();
+        });
+
+        // Accordion functionality for submenus
+        toggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                const targetMenu = document.getElementById(toggle.getAttribute('data-target'));
+                const arrow = toggle.querySelector('.revah-arrow');
+                const isOpen = targetMenu.classList.contains('show-menu');
+
+                // Force close all first
+                closeAllSubmenus();
+
+                // If it wasn't open, open it and rotate arrow Down
+                if(!isOpen){
+                    targetMenu.classList.add('show-menu');
+                    arrow.style.transform = 'rotate(90deg)';
+                }
+            });
+        });
+    });
+    </script>
+
+</body>
+</html>
