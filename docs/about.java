@@ -1,11 +1,14 @@
+public class about {
+    public static final String HTML = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revah Tech | Empowering your Vision</title>
+    <title>About Us | Revah Tech</title>
 
     <style>
+        /* --- CORE STYLES --- */
         *{
             margin:0;
             padding:0;
@@ -35,7 +38,6 @@
         .logo{
             height:45px;
         }
-
         .menu-container{
             display:flex;
             align-items:center;
@@ -49,46 +51,7 @@
             height:24px;
         }
 
-        /* --- LANDING PAGE MAIN CONTENT --- */
-        main{
-            flex:1;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
-            text-align:center;
-            padding:20px;
-        }
-
-        h1{
-            font-size:3.5rem;
-            margin-bottom:20px;
-        }
-
-        h2{
-            font-size:1.8rem;
-            font-weight:400;
-            line-height:1.5;
-            margin-bottom:50px;
-        }
-
-        .btn-discover{
-            background:white;
-            color:#1a3673;
-            padding:15px 40px;
-            border-radius:30px;
-            text-decoration:none;
-            font-weight:600;
-            transition:0.3s ease;
-        }
-
-        .btn-discover:hover{
-            transform:translateY(-3px);
-            box-shadow:0 6px 12px rgba(0,0,0,0.2);
-        }
-
         /* --- BULLETPROOF SIDEBAR --- */
-
         #revah-sidebar{
             position:fixed;
             top:0;
@@ -145,8 +108,7 @@
             transition:transform 0.3s ease;
             font-size:0.8rem;
         }
-        
-        /* --- ACCORDION SUBMENU --- */
+
         .revah-submenu{
             max-height:0;
             overflow:hidden;
@@ -177,19 +139,61 @@
             font-size:1rem;
         }
 
+        /* --- ABOUT US PAGE SPECIFIC STYLES --- */
+        .about-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 80px;
+            overflow-y: auto;
+        }
+
+        .page-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            letter-spacing: 1px;
+        }
+
+        .about-content-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        .about-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e2e8f0;
+            text-align: justify;
+        }
+
         @media(max-width:768px){
-            nav{
-                padding:25px;
-            }
-            h1{
-                font-size:2.4rem;
-            }
-            h2{
-                font-size:1.2rem;
-            }
-            #revah-sidebar{
-                width:100%;
-            }
+            nav { padding: 25px; }
+            .about-main { padding: 20px; }
+            .about-content-wrapper { flex-direction: column; text-align: center; }
+            .about-text p { text-align: left; }
+            #revah-sidebar { width: 100%; }
         }
     </style>
 </head>
@@ -205,7 +209,6 @@
         </div>
 
         <ul class="revah-links">
-
             <li><a href="about.html">About Us</a></li>
 
             <li>
@@ -236,16 +239,14 @@
                     </ul>
                 </div>
             </li>
-
-           <li><a href="team.html">Our Team</a></li>
+            <li><a href="team.html">Our Team</a></li>
             <li><a href="contact.html">Contact Us</a></li>
-
         </ul>
 
     </div>
 
     <nav>
-        <a href="landing.html">
+        <a href="index.html">
             <img src="images/logo.png" class="logo" alt="Revah Tech Logo">
         </a>
 
@@ -255,16 +256,18 @@
         </div>
     </nav>
 
-    <main>
-        <h1>Empowering your Vision</h1>
-        <h2>
-            Delivering Innovative Technological
-            <br>
-            Solutions
-        </h2>
-       <a href="about.html" class="btn-discover">
-            Discover More
-        </a>
+    <main class="about-main">
+        <h1 class="page-title">About Us</h1>
+
+        <div class="about-content-wrapper">
+            <div class="about-image">
+                <img src="images/about_illustration.png" alt="Revah Tech Team Engineering">
+            </div>
+
+            <div class="about-text">
+                <p>At Revah Tech, we bridge the gap between complex hardware engineering and seamless software integration, operating at the intersection of physical components and digital intelligence. Our team specializes in delivering high-performance tech solutions that span the entire development lifecycle, from sophisticated full-stack web and mobile applications to cutting-edge, interconnected IoT ecosystems. By leveraging a robust tech stack—including Python, Node.js, Nest.js, Prisma, and Flutter—we build the resilient backends and intuitive frontends necessary for modern digital transformation.</p>
+            </div>
+        </div>
     </main>
 
     <script>
@@ -277,7 +280,6 @@
         const allSubmenus = document.querySelectorAll('.revah-submenu');
         const allArrows = document.querySelectorAll('.revah-arrow');
 
-        // Close all submenus and reset arrows to point Right
         function closeAllSubmenus(){
             allSubmenus.forEach(menu => {
                 menu.classList.remove('show-menu');
@@ -288,18 +290,15 @@
             });
         }
 
-        // Open Sidebar
         openBtn.addEventListener('click', () => {
             sidebar.classList.add('active');
         });
 
-        // Close Sidebar and reset everything
         closeBtn.addEventListener('click', () => {
             sidebar.classList.remove('active');
             closeAllSubmenus();
         });
 
-        // Accordion functionality for submenus
         toggles.forEach(toggle => {
             toggle.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -308,10 +307,8 @@
                 const arrow = toggle.querySelector('.revah-arrow');
                 const isOpen = targetMenu.classList.contains('show-menu');
 
-                // Force close all first
                 closeAllSubmenus();
 
-                // If it wasn't open, open it and rotate arrow Down
                 if(!isOpen){
                     targetMenu.classList.add('show-menu');
                     arrow.style.transform = 'rotate(90deg)';
@@ -320,6 +317,11 @@
         });
     });
     </script>
-
 </body>
 </html>
+""";
+
+    public static void main(String[] args) {
+        System.out.println(HTML);
+    }
+}

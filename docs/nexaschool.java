@@ -1,3 +1,5 @@
+public class nexaschool {
+    public static final String HTML = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +10,7 @@
     <style>
         /* --- CORE STYLES --- */
         *{ margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
-        
+
         body{
             background-color:#1a3673;
             background-image:url('images/bg_pattern.png');
@@ -163,7 +165,7 @@
     </div>
 
     <nav>
-        <a href="landing.html">
+        <a href="index.html">
             <img src="images/logo.png" class="logo" alt="Revah Tech Logo">
         </a>
         <div class="menu-container" id="revah-open-btn">
@@ -177,7 +179,7 @@
             <h1 class="product-name">CRMSchool</h1>
             <div class="status-text">Coming Soon</div>
             <p class="description">We are building the ultimate CRM and management ecosystem tailored for modern educational institutions. Stay tuned for the future of school administration.</p>
-            <a href="landing.html" class="btn-back">← Back to Home</a>
+            <a href="index.html" class="btn-back">← Back to Home</a>
         </div>
     </main>
 
@@ -196,7 +198,7 @@
         }
 
         openBtn.addEventListener('click', () => sidebar.classList.add('active'));
-        
+
         closeBtn.addEventListener('click', () => {
             sidebar.classList.remove('active');
             closeAllSubmenus();
@@ -219,3 +221,9 @@
     </script>
 </body>
 </html>
+""";
+
+    public static void main(String[] args) {
+        System.out.println(HTML);
+    }
+}

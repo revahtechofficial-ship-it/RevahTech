@@ -1,3 +1,5 @@
+public class nexax {
+    public static final String HTML = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +10,7 @@
     <style>
         /* --- CORE STYLES --- */
         *{ margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
-        
+
         body{
             background-color:#1a3673;
             background-image:url('images/bg_pattern.png');
@@ -35,7 +37,7 @@
         .revah-links{ list-style:none; display:flex; flex-direction:column; gap:25px; }
         .revah-links a{ color:white; text-decoration:none; display:flex; align-items:center; gap:10px; font-size:1.1rem; }
         .revah-links a:hover{ color:#b3c2f2; }
-        .revah-arrow{ display:inline-block; transition:transform 0.3s ease; font-size:0.8rem; }
+        .revah-a.revah-arrow{ display: inline-block; transition:transform 0.3s ease; font-size:0.8rem; }
         .revah-submenu{ max-height:0; overflow:hidden; opacity:0; visibility:hidden; transition:all 0.3s ease; margin-left:25px; margin-top:0; }
         .revah-submenu.show-menu{ max-height:300px; opacity:1; visibility:visible; margin-top:10px; }
         .revah-submenu-list{ list-style:none; display:flex; flex-direction:column; gap:15px; padding:10px 0; }
@@ -260,7 +262,7 @@
 
         .check-icon { stroke: #4ade80; }
         .cross-icon { stroke: #f87171; }
-        
+
         .nexax-glow { border: 1px solid rgba(96, 165, 250, 0.5); box-shadow: 0 0 30px rgba(59, 130, 246, 0.15); }
 
         @media(max-width: 900px){
@@ -318,7 +320,7 @@
     </div>
 
     <nav>
-        <a href="landing.html">
+        <a href="index.html">
             <img src="images/logo.png" class="logo" alt="Revah Tech Logo">
         </a>
         <div class="menu-container" id="revah-open-btn">
@@ -329,10 +331,10 @@
 
     <main class="nexax-main">
         <div class="nexax-container">
-            
+
             <section class="hero-section">
                 <div class="nexax-logo-text">NexaX</div>
-                
+
                 <div class="nexax-badge">INTELLIGENT SECURE EDGE AI</div>
                 <h2 class="hero-title">Architecting the Future of<br><span class="text-gradient">Edge AI Surveillance</span></h2>
                 <p class="hero-subtitle">An AI-powered edge surveillance platform built for real-time analytics, privacy-first security, and intelligent monitoring. Processing data at the source, not in the cloud.</p>
@@ -363,7 +365,7 @@
             <section>
                 <h2 class="section-title">Core AI Features</h2>
                 <div class="features-grid">
-                    
+
                     <div class="glass-card">
                         <div class="feature-icon">
                             <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
@@ -402,7 +404,7 @@
             <section>
                 <h2 class="section-title">Built Different. Built for the Future.</h2>
                 <div class="comparison-wrapper">
-                    
+
                     <div class="glass-card vs-card nexax-glow">
                         <h3><span class="text-gradient">NexaX</span> System</h3>
                         <ul class="vs-list">
@@ -446,7 +448,7 @@
         }
 
         openBtn.addEventListener('click', () => sidebar.classList.add('active'));
-        
+
         closeBtn.addEventListener('click', () => {
             sidebar.classList.remove('active');
             closeAllSubmenus();
@@ -469,3 +471,9 @@
     </script>
 </body>
 </html>
+""";
+
+    public static void main(String[] args) {
+        System.out.println(HTML);
+    }
+}

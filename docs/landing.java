@@ -1,9 +1,11 @@
+public class landing {
+    public static final String HTML = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services | Revah Tech</title>
+    <title>Revah Tech | Empowering your Vision</title>
 
     <style>
         *{
@@ -35,6 +37,7 @@
         .logo{
             height:45px;
         }
+
         .menu-container{
             display:flex;
             align-items:center;
@@ -48,7 +51,45 @@
             height:24px;
         }
 
-        /* --- SIDEBAR --- */
+        /* --- LANDING PAGE MAIN CONTENT --- */
+        main{
+            flex:1;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+            padding:20px;
+        }
+
+        h1{
+            font-size:3.5rem;
+            margin-bottom:20px;
+        }
+
+        h2{
+            font-size:1.8rem;
+            font-weight:400;
+            line-height:1.5;
+            margin-bottom:50px;
+        }
+
+        .btn-discover{
+            background:white;
+            color:#1a3673;
+            padding:15px 40px;
+            border-radius:30px;
+            text-decoration:none;
+            font-weight:600;
+            transition:0.3s ease;
+        }
+
+        .btn-discover:hover{
+            transform:translateY(-3px);
+            box-shadow:0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        /* --- BULLETPROOF SIDEBAR --- */
 
         #revah-sidebar{
             position:fixed;
@@ -106,7 +147,8 @@
             transition:transform 0.3s ease;
             font-size:0.8rem;
         }
-        
+
+        /* --- ACCORDION SUBMENU --- */
         .revah-submenu{
             max-height:0;
             overflow:hidden;
@@ -137,92 +179,18 @@
             font-size:1rem;
         }
 
-        /* --- SERVICES PAGE CONTENT --- */
-
-        .services-main{
-            flex:1;
-            overflow-y:auto;
-            padding:20px 80px 80px;
-        }
-
-        .page-title{
-            text-align:center;
-            font-size:3rem;
-            margin-bottom:60px;
-        }
-
-        .services-grid{
-            display:flex;
-            justify-content:center;
-            gap:40px;
-            flex-wrap:wrap;
-        }
-
-        .service-card-link {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .service-card{
-            display:flex;
-            flex-direction:column;
-            align-items:center;
-            transition:0.3s ease;
-            cursor:pointer;
-        }
-
-        .service-card:hover{
-            transform:translateY(-8px);
-        }
-
-        .service-img-wrapper{
-            width:280px;
-            height:280px;
-            border-radius:20px;
-            overflow:hidden;
-            background:rgba(255,255,255,0.05);
-            border:2px solid transparent;
-            transition:0.3s ease;
-        }
-
-        .service-card:hover .service-img-wrapper{
-            border-color:#8b5cf6;
-            box-shadow:0 0 20px rgba(139,92,246,0.3);
-        }
-
-        .service-img-wrapper img{
-            width:100%;
-            height:100%;
-            object-fit:contain;
-            padding:10px;
-        }
-
-        .service-title{
-            margin-top:25px;
-            font-size:1.3rem;
-        }
-
         @media(max-width:768px){
             nav{
                 padding:25px;
             }
-
-            .services-main{
-                padding:20px;
+            h1{
+                font-size:2.4rem;
             }
-
-            .page-title{
-                font-size:2.2rem;
+            h2{
+                font-size:1.2rem;
             }
-
             #revah-sidebar{
                 width:100%;
-            }
-
-            .service-img-wrapper{
-                width:100%;
-                max-width:320px;
-                height:250px;
             }
         }
     </style>
@@ -233,7 +201,7 @@
 
         <div class="sidebar-header">
             <div class="close-btn" id="revah-close-btn">
-                <img src="images/menu_icon.png" class="menu-icon">
+                <img src="images/menu_icon.png" class="menu-icon" alt="Close">
                 <span>Close</span>
             </div>
         </div>
@@ -271,7 +239,7 @@
                 </div>
             </li>
 
-            <li><a href="team.html">Our Team</a></li>
+           <li><a href="team.html">Our Team</a></li>
             <li><a href="contact.html">Contact Us</a></li>
 
         </ul>
@@ -280,50 +248,25 @@
 
     <nav>
         <a href="index.html">
-            <img src="images/logo.png" class="logo">
+            <img src="images/logo.png" class="logo" alt="Revah Tech Logo">
         </a>
 
         <div class="menu-container" id="revah-open-btn">
-            <img src="images/menu_icon.png" class="menu-icon">
+            <img src="images/menu_icon.png" class="menu-icon" alt="Menu">
             <span>Menu</span>
         </div>
     </nav>
 
-    <main class="services-main">
-
-        <h1 class="page-title">Services</h1>
-
-        <div class="services-grid">
-
-            <a href="service_ai.html" class="service-card-link">
-                <div class="service-card">
-                    <div class="service-img-wrapper">
-                        <img src="images/service_ai.png" alt="AI">
-                    </div>
-                    <h3 class="service-title">Artificial Intelligence</h3>
-                </div>
-            </a>
-            
-            <a href="service_app_dev.html" class="service-card-link">
-                <div class="service-card">
-                    <div class="service-img-wrapper">
-                        <img src="images/service_app.png" alt="App Development">
-                    </div>
-                    <h3 class="service-title">App Development</h3>
-                </div>
-            </a>
-
-            <a href="service_web_dev.html" class="service-card-link">
-                <div class="service-card">
-                    <div class="service-img-wrapper">
-                        <img src="images/service_web.png" alt="Web Development">
-                    </div>
-                    <h3 class="service-title">Web Development</h3>
-                </div>
-            </a>
-
-        </div>
-
+    <main>
+        <h1>Empowering your Vision</h1>
+        <h2>
+            Delivering Innovative Technological
+            <br>
+            Solutions
+        </h2>
+       <a href="about.html" class="btn-discover">
+            Discover More
+        </a>
     </main>
 
     <script>
@@ -336,6 +279,7 @@
         const allSubmenus = document.querySelectorAll('.revah-submenu');
         const allArrows = document.querySelectorAll('.revah-arrow');
 
+        // Close all submenus and reset arrows to point Right
         function closeAllSubmenus(){
             allSubmenus.forEach(menu => {
                 menu.classList.remove('show-menu');
@@ -346,27 +290,30 @@
             });
         }
 
+        // Open Sidebar
         openBtn.addEventListener('click', () => {
             sidebar.classList.add('active');
         });
 
+        // Close Sidebar and reset everything
         closeBtn.addEventListener('click', () => {
             sidebar.classList.remove('active');
             closeAllSubmenus();
         });
 
+        // Accordion functionality for submenus
         toggles.forEach(toggle => {
             toggle.addEventListener('click', (e) => {
                 e.preventDefault();
 
-                const targetMenu = document.getElementById(
-                    toggle.getAttribute('data-target')
-                );
+                const targetMenu = document.getElementById(toggle.getAttribute('data-target'));
                 const arrow = toggle.querySelector('.revah-arrow');
                 const isOpen = targetMenu.classList.contains('show-menu');
 
+                // Force close all first
                 closeAllSubmenus();
 
+                // If it wasn't open, open it and rotate arrow Down
                 if(!isOpen){
                     targetMenu.classList.add('show-menu');
                     arrow.style.transform = 'rotate(90deg)';
@@ -375,5 +322,12 @@
         });
     });
     </script>
+
 </body>
 </html>
+""";
+
+    public static void main(String[] args) {
+        System.out.println(HTML);
+    }
+}

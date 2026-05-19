@@ -1,3 +1,5 @@
+public class landing {
+    public static final String HTML = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -145,7 +147,7 @@
             transition:transform 0.3s ease;
             font-size:0.8rem;
         }
-        
+
         /* --- ACCORDION SUBMENU --- */
         .revah-submenu{
             max-height:0;
@@ -245,7 +247,7 @@
     </div>
 
     <nav>
-        <a href="index.html">
+        <a href="landing.html">
             <img src="images/logo.png" class="logo" alt="Revah Tech Logo">
         </a>
 
@@ -323,3 +325,9 @@
 
 </body>
 </html>
+""";
+
+    public static void main(String[] args) {
+        System.out.println(HTML);
+    }
+}

@@ -1,14 +1,16 @@
+public class team {
+    public static final String HTML = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRMSchool | Coming Soon</title>
+    <title>Our Team | Revah Tech</title>
 
     <style>
         /* --- CORE STYLES --- */
         *{ margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
-        
+
         body{
             background-color:#1a3673;
             background-image:url('images/bg_pattern.png');
@@ -40,82 +42,59 @@
         .revah-submenu-list{ list-style:none; display:flex; flex-direction:column; gap:15px; padding:10px 0; }
         .revah-submenu-list a{ color:#d1d8f0; font-size:1rem; }
 
-        /* --- COMING SOON SPECIFIC STYLES --- */
-        .coming-soon-main {
+        /* --- TEAM PAGE SPECIFIC STYLES --- */
+        .team-main {
             flex: 1;
+            overflow-y: auto;
+            padding: 20px 80px 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .team-grid {
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 20px;
+            gap: 40px;
+            flex-wrap: wrap;
+            max-width: 1100px;
         }
 
-        .glass-container {
-            background: rgba(17, 37, 84, 0.6);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(96, 165, 250, 0.3);
+        /* FIXED: Simplified card to just hold your baked image perfectly */
+        .team-card {
+            width: 280px;
             border-radius: 20px;
-            padding: 60px 80px;
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), inset 0 0 30px rgba(96, 165, 250, 0.1);
-            max-width: 700px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* FIXED: Removed object-fit so it doesn't crop your image */
+        .team-card img {
             width: 100%;
-            animation: pulse-glow 3s infinite alternate;
+            height: auto;
+            display: block;
+            border-radius: 20px;
         }
 
-        @keyframes pulse-glow {
-            0% { box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), inset 0 0 30px rgba(96, 165, 250, 0.1); }
-            100% { box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), inset 0 0 50px rgba(96, 165, 250, 0.2); }
-        }
-
-        .product-name {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #ffffff, #60a5fa);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: 1px;
-        }
-
-        .status-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #4ade80; /* Soft green */
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .description {
-            font-size: 1.1rem;
-            color: #cbd5e1;
-            line-height: 1.6;
-            margin-bottom: 40px;
-        }
-
-        .btn-back {
-            display: inline-block;
-            background: white;
-            color: #1a3673;
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s ease;
-        }
-
-        .btn-back:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.2);
-        }
-
-        @media(max-width: 768px){
-            nav{ padding: 25px; }
-            .glass-container { padding: 40px 30px; }
-            .product-name { font-size: 2.5rem; }
-            .status-text { font-size: 1.2rem; }
-            #revah-sidebar{ width: 100%; }
+        @media(max-width:768px){
+            nav{ padding:25px; }
+            .team-main{ padding:20px; }
+            .page-title{ font-size:2.5rem; }
+            #revah-sidebar{ width:100%; }
+            .team-card{ width:100%; max-width:320px; }
         }
     </style>
 </head>
@@ -172,17 +151,33 @@
         </div>
     </nav>
 
-    <main class="coming-soon-main">
-        <div class="glass-container">
-            <h1 class="product-name">CRMSchool</h1>
-            <div class="status-text">Coming Soon</div>
-            <p class="description">We are building the ultimate CRM and management ecosystem tailored for modern educational institutions. Stay tuned for the future of school administration.</p>
-            <a href="index.html" class="btn-back">← Back to Home</a>
+    <main class="team-main">
+        <h1 class="page-title">Our Team</h1>
+
+        <div class="team-grid">
+
+            <div class="team-card">
+                <img src="images/team_ishan.png" alt="Ishan Dangal">
+            </div>
+
+            <div class="team-card">
+                <img src="images/team_pratik.png" alt="Pratik Mishra">
+            </div>
+
+            <div class="team-card">
+                <img src="images/team_abheejan.png" alt="Abheejan Lal Shrestha">
+            </div>
+
+            <div class="team-card">
+                <img src="images/team_quamar.png" alt="Mohammad Quamar Nasim">
+            </div>
+
         </div>
     </main>
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
+
         const sidebar = document.getElementById('revah-sidebar');
         const openBtn = document.getElementById('revah-open-btn');
         const closeBtn = document.getElementById('revah-close-btn');
@@ -190,25 +185,39 @@
         const allSubmenus = document.querySelectorAll('.revah-submenu');
         const allArrows = document.querySelectorAll('.revah-arrow');
 
+        // Close all submenus and reset arrows to point Right
         function closeAllSubmenus(){
-            allSubmenus.forEach(menu => menu.classList.remove('show-menu'));
-            allArrows.forEach(arrow => arrow.style.transform = 'rotate(0deg)');
+            allSubmenus.forEach(menu => {
+                menu.classList.remove('show-menu');
+            });
+            allArrows.forEach(arrow => {
+                arrow.style.transform = 'rotate(0deg)';
+            });
         }
 
-        openBtn.addEventListener('click', () => sidebar.classList.add('active'));
-        
+        // Open Sidebar
+        openBtn.addEventListener('click', () => {
+            sidebar.classList.add('active');
+        });
+
+        // Close Sidebar and reset everything
         closeBtn.addEventListener('click', () => {
             sidebar.classList.remove('active');
             closeAllSubmenus();
         });
 
+        // Accordion functionality for submenus
         toggles.forEach(toggle => {
             toggle.addEventListener('click', (e) => {
                 e.preventDefault();
                 const targetMenu = document.getElementById(toggle.getAttribute('data-target'));
                 const arrow = toggle.querySelector('.revah-arrow');
                 const isOpen = targetMenu.classList.contains('show-menu');
+
+                // Force close all first
                 closeAllSubmenus();
+
+                // If it wasn't open, open it and rotate arrow Down
                 if(!isOpen){
                     targetMenu.classList.add('show-menu');
                     arrow.style.transform = 'rotate(90deg)';
@@ -219,3 +228,9 @@
     </script>
 </body>
 </html>
+""";
+
+    public static void main(String[] args) {
+        System.out.println(HTML);
+    }
+}
