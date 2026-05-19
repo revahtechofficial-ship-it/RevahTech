@@ -1,14 +1,11 @@
-public class about {
-    public static final String HTML = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Revah Tech</title>
+    <title>Services | Revah Tech</title>
 
     <style>
-        /* --- CORE STYLES --- */
         *{
             margin:0;
             padding:0;
@@ -51,7 +48,8 @@ public class about {
             height:24px;
         }
 
-        /* --- BULLETPROOF SIDEBAR --- */
+        /* --- SIDEBAR --- */
+
         #revah-sidebar{
             position:fixed;
             top:0;
@@ -108,7 +106,7 @@ public class about {
             transition:transform 0.3s ease;
             font-size:0.8rem;
         }
-
+        
         .revah-submenu{
             max-height:0;
             overflow:hidden;
@@ -139,61 +137,93 @@ public class about {
             font-size:1rem;
         }
 
-        /* --- ABOUT US PAGE SPECIFIC STYLES --- */
-        .about-main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px 80px;
-            overflow-y: auto;
+        /* --- SERVICES PAGE CONTENT --- */
+
+        .services-main{
+            flex:1;
+            overflow-y:auto;
+            padding:20px 80px 80px;
         }
 
-        .page-title {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 50px;
-            letter-spacing: 1px;
+        .page-title{
+            text-align:center;
+            font-size:3rem;
+            margin-bottom:60px;
         }
 
-        .about-content-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 60px;
-            max-width: 1100px;
-            width: 100%;
+        .services-grid{
+            display:flex;
+            justify-content:center;
+            gap:40px;
+            flex-wrap:wrap;
         }
 
-        .about-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
+        .service-card-link {
+            text-decoration: none;
+            color: inherit;
         }
 
-        .about-image img {
-            width: 100%;
-            max-width: 450px;
-            height: auto;
+        .service-card{
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            transition:0.3s ease;
+            cursor:pointer;
         }
 
-        .about-text {
-            flex: 1;
+        .service-card:hover{
+            transform:translateY(-8px);
         }
 
-        .about-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #e2e8f0;
-            text-align: justify;
+        .service-img-wrapper{
+            width:280px;
+            height:280px;
+            border-radius:20px;
+            overflow:hidden;
+            background:rgba(255,255,255,0.05);
+            border:2px solid transparent;
+            transition:0.3s ease;
+        }
+
+        .service-card:hover .service-img-wrapper{
+            border-color:#8b5cf6;
+            box-shadow:0 0 20px rgba(139,92,246,0.3);
+        }
+
+        .service-img-wrapper img{
+            width:100%;
+            height:100%;
+            object-fit:contain;
+            padding:10px;
+        }
+
+        .service-title{
+            margin-top:25px;
+            font-size:1.3rem;
         }
 
         @media(max-width:768px){
-            nav { padding: 25px; }
-            .about-main { padding: 20px; }
-            .about-content-wrapper { flex-direction: column; text-align: center; }
-            .about-text p { text-align: left; }
-            #revah-sidebar { width: 100%; }
+            nav{
+                padding:25px;
+            }
+
+            .services-main{
+                padding:20px;
+            }
+
+            .page-title{
+                font-size:2.2rem;
+            }
+
+            #revah-sidebar{
+                width:100%;
+            }
+
+            .service-img-wrapper{
+                width:100%;
+                max-width:320px;
+                height:250px;
+            }
         }
     </style>
 </head>
@@ -203,12 +233,13 @@ public class about {
 
         <div class="sidebar-header">
             <div class="close-btn" id="revah-close-btn">
-                <img src="images/menu_icon.png" class="menu-icon" alt="Close">
+                <img src="images/menu_icon.png" class="menu-icon">
                 <span>Close</span>
             </div>
         </div>
 
         <ul class="revah-links">
+
             <li><a href="about.html">About Us</a></li>
 
             <li>
@@ -239,35 +270,60 @@ public class about {
                     </ul>
                 </div>
             </li>
+
             <li><a href="team.html">Our Team</a></li>
             <li><a href="contact.html">Contact Us</a></li>
+
         </ul>
 
     </div>
 
     <nav>
-        <a href="index.html">
-            <img src="images/logo.png" class="logo" alt="Revah Tech Logo">
+        <a href="landing.html">
+            <img src="images/logo.png" class="logo">
         </a>
 
         <div class="menu-container" id="revah-open-btn">
-            <img src="images/menu_icon.png" class="menu-icon" alt="Menu">
+            <img src="images/menu_icon.png" class="menu-icon">
             <span>Menu</span>
         </div>
     </nav>
 
-    <main class="about-main">
-        <h1 class="page-title">About Us</h1>
+    <main class="services-main">
 
-        <div class="about-content-wrapper">
-            <div class="about-image">
-                <img src="images/about_illustration.png" alt="Revah Tech Team Engineering">
-            </div>
+        <h1 class="page-title">Services</h1>
 
-            <div class="about-text">
-                <p>At Revah Tech, we bridge the gap between complex hardware engineering and seamless software integration, operating at the intersection of physical components and digital intelligence. Our team specializes in delivering high-performance tech solutions that span the entire development lifecycle, from sophisticated full-stack web and mobile applications to cutting-edge, interconnected IoT ecosystems. By leveraging a robust tech stack—including Python, Node.js, Nest.js, Prisma, and Flutter—we build the resilient backends and intuitive frontends necessary for modern digital transformation.</p>
-            </div>
+        <div class="services-grid">
+
+            <a href="service_ai.html" class="service-card-link">
+                <div class="service-card">
+                    <div class="service-img-wrapper">
+                        <img src="images/service_ai.png" alt="AI">
+                    </div>
+                    <h3 class="service-title">Artificial Intelligence</h3>
+                </div>
+            </a>
+            
+            <a href="service_app_dev.html" class="service-card-link">
+                <div class="service-card">
+                    <div class="service-img-wrapper">
+                        <img src="images/service_app.png" alt="App Development">
+                    </div>
+                    <h3 class="service-title">App Development</h3>
+                </div>
+            </a>
+
+            <a href="service_web_dev.html" class="service-card-link">
+                <div class="service-card">
+                    <div class="service-img-wrapper">
+                        <img src="images/service_web.png" alt="Web Development">
+                    </div>
+                    <h3 class="service-title">Web Development</h3>
+                </div>
+            </a>
+
         </div>
+
     </main>
 
     <script>
@@ -303,7 +359,9 @@ public class about {
             toggle.addEventListener('click', (e) => {
                 e.preventDefault();
 
-                const targetMenu = document.getElementById(toggle.getAttribute('data-target'));
+                const targetMenu = document.getElementById(
+                    toggle.getAttribute('data-target')
+                );
                 const arrow = toggle.querySelector('.revah-arrow');
                 const isOpen = targetMenu.classList.contains('show-menu');
 
@@ -319,9 +377,3 @@ public class about {
     </script>
 </body>
 </html>
-""";
-
-    public static void main(String[] args) {
-        System.out.println(HTML);
-    }
-}

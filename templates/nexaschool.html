@@ -1,5 +1,3 @@
-public class nexaschool {
-    public static final String HTML = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +8,7 @@ public class nexaschool {
     <style>
         /* --- CORE STYLES --- */
         *{ margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
-
+        
         body{
             background-color:#1a3673;
             background-image:url('images/bg_pattern.png');
@@ -198,7 +196,7 @@ public class nexaschool {
         }
 
         openBtn.addEventListener('click', () => sidebar.classList.add('active'));
-
+        
         closeBtn.addEventListener('click', () => {
             sidebar.classList.remove('active');
             closeAllSubmenus();
@@ -221,9 +219,3 @@ public class nexaschool {
     </script>
 </body>
 </html>
-""";
-
-    public static void main(String[] args) {
-        System.out.println(HTML);
-    }
-}

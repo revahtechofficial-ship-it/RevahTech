@@ -1,5 +1,3 @@
-public class team {
-    public static final String HTML = """
 <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -10,7 +8,7 @@ public class team {
         <style>
             /* --- CORE STYLES --- */
             *{ margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
-
+            
             body{
                 background-color:#1a3673;
                 background-image:url('images/bg_pattern.png');
@@ -65,7 +63,7 @@ public class team {
                 justify-content: center;
                 gap: 40px;
                 flex-wrap: wrap;
-                max-width: 1100px;
+                max-width: 1100px; 
             }
 
             /* FIXED: Simplified card to just hold your baked image perfectly */
@@ -153,9 +151,9 @@ public class team {
 
         <main class="team-main">
             <h1 class="page-title">Our Team</h1>
-
+            
             <div class="team-grid">
-
+                
                 <div class="team-card">
                     <img src="images/team_ishan.png" alt="Ishan Dangal">
                 </div>
@@ -222,9 +220,3 @@ public class team {
         </script>
     </body>
     </html>
-""";
-
-    public static void main(String[] args) {
-        System.out.println(HTML);
-    }
-}

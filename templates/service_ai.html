@@ -1,16 +1,14 @@
-public class service_web_dev {
-    public static final String HTML = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Development Services | Revah Tech</title>
+    <title>Artificial Intelligence Services | Revah Tech</title>
 
     <style>
         /* --- CORE STYLES --- */
         *{ margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
-
+        
         body{
             background-color:#1a3673;
             background-image:url('images/bg_pattern.png');
@@ -43,7 +41,7 @@ public class service_web_dev {
         .revah-submenu-list{ list-style:none; display:flex; flex-direction:column; gap:15px; padding:10px 0; }
         .revah-submenu-list a{ color:#d1d8f0; font-size:1rem; }
 
-        /* --- WEB DEV PAGE SPECIFIC STYLES --- */
+        /* --- AI SERVICE PAGE SPECIFIC STYLES --- */
         .service-main {
             flex: 1;
             overflow-y: auto;
@@ -69,9 +67,9 @@ public class service_web_dev {
 
         .service-badge {
             display: inline-block;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.5);
-            color: #34d399;
+            background: rgba(167, 139, 250, 0.1);
+            border: 1px solid rgba(167, 139, 250, 0.5);
+            color: #a78bfa;
             padding: 6px 16px;
             border-radius: 30px;
             font-size: 0.9rem;
@@ -89,7 +87,7 @@ public class service_web_dev {
         }
 
         .text-gradient {
-            background: linear-gradient(90deg, #10b981, #3b82f6);
+            background: linear-gradient(90deg, #60a5fa, #a78bfa);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -103,13 +101,7 @@ public class service_web_dev {
             line-height: 1.8;
         }
 
-        /* Capabilities Grid */
-        .capabilities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
+        /* Glassmorphism Cards */
         .glass-card {
             background: rgba(17, 37, 84, 0.6);
             backdrop-filter: blur(12px);
@@ -121,27 +113,34 @@ public class service_web_dev {
         }
 
         .glass-card:hover {
-            border-color: rgba(52, 211, 153, 0.4);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(167, 139, 250, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(167, 139, 250, 0.05);
             transform: translateY(-5px);
+        }
+
+        /* Capabilities Grid */
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         .icon-wrapper {
             width: 60px;
             height: 60px;
-            background: rgba(16, 185, 129, 0.1);
+            background: rgba(167, 139, 250, 0.1);
             border-radius: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 25px;
-            border: 1px solid rgba(16, 185, 129, 0.3);
+            border: 1px solid rgba(167, 139, 250, 0.3);
         }
 
         .icon-wrapper svg {
             width: 32px;
             height: 32px;
-            stroke: #34d399;
+            stroke: #a78bfa;
         }
 
         .card-title {
@@ -156,45 +155,44 @@ public class service_web_dev {
             line-height: 1.6;
         }
 
-        /* Tech Stack Section */
-        .tech-footer {
+        /* CTA Section */
+        .cta-section {
             text-align: center;
-            margin-top: 40px;
-            padding: 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 60px;
+            background: linear-gradient(135deg, rgba(17, 37, 84, 0.8), rgba(26, 54, 115, 0.8));
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .tech-list {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-top: 20px;
-            opacity: 0.8;
-        }
-
-        .tech-item {
-            font-weight: 600;
-            color: #94a3b8;
-            font-size: 1.1rem;
+        .cta-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
         }
 
         .btn-primary {
             display: inline-block;
-            background: linear-gradient(90deg, #10b981, #0ea5e9);
+            background: linear-gradient(90deg, #3b82f6, #6366f1);
             color: white;
             padding: 15px 35px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
-            margin-top: 40px;
+            margin-top: 20px;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+            transform: translateY(-2px);
         }
 
         @media(max-width: 900px){
             nav{ padding:25px; }
             .service-main{ padding:20px; }
             .hero-title{ font-size: 2.5rem; }
+            .cta-section { padding: 40px 20px; }
             #revah-sidebar{ width:100%; }
         }
     </style>
@@ -243,7 +241,7 @@ public class service_web_dev {
     </div>
 
     <nav>
-        <a href="index.html">
+        <a href="landing.html">
             <img src="images/logo.png" class="logo" alt="Revah Tech Logo">
         </a>
         <div class="menu-container" id="revah-open-btn">
@@ -254,52 +252,53 @@ public class service_web_dev {
 
     <main class="service-main">
         <div class="service-container">
-
+            
             <section class="hero-section">
-                <div class="service-badge">Scalable Web Architecture</div>
-                <h1 class="hero-title">Next-Generation <br><span class="text-gradient">Web Platforms</span></h1>
-                <p class="hero-subtitle">We design and develop grand, high-level web experiences. From interactive frontend portfolios with fluid animations to complex backend architectures that power enterprise portals.</p>
-                <a href="contact.html" class="btn-primary">Discuss Your Website</a>
+                <div class="service-badge">Enterprise Solutions</div>
+                <h1 class="hero-title">Artificial Intelligence <br><span class="text-gradient">Engineering</span></h1>
+                <p class="hero-subtitle">We build custom, high-performance AI architectures that solve real-world problems. From cloud-based machine learning models to localized Edge AI inferencing, our solutions are designed for accuracy, speed, and absolute data privacy.</p>
             </section>
 
             <section class="capabilities-grid">
-
+                
                 <div class="glass-card">
                     <div class="icon-wrapper">
-                        <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
                     </div>
-                    <h3 class="card-title">Immersive Frontends</h3>
-                    <p class="card-desc">We build grand, visually stunning interfaces using <b>React</b>. We focus on state-of-the-art UI design, implementing complex animations and highly interactive elements that captivate users.</p>
+                    <h3 class="card-title">Computer Vision & Edge AI</h3>
+                    <p class="card-desc">Advanced image processing algorithms for facial recognition, object tracking, and License Plate Recognition (LPR). We deploy models directly to edge devices to eliminate latency and ensure zero cloud dependency.</p>
                 </div>
 
                 <div class="glass-card">
                     <div class="icon-wrapper">
-                        <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/></svg>
                     </div>
-                    <h3 class="card-title">Resilient Backends</h3>
-                    <p class="card-desc">Secure, rapid, and scalable infrastructure. We utilize powerful frameworks like <b>Django</b> and <b>Go</b> alongside modern database integrations like Supabase and Firebase.</p>
+                    <h3 class="card-title">Predictive Analytics</h3>
+                    <p class="card-desc">Transform raw historical data into actionable foresight. We build custom machine learning pipelines that detect anomalies, forecast trends, and automate complex decision-making processes.</p>
                 </div>
 
                 <div class="glass-card">
                     <div class="icon-wrapper">
-                        <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
                     </div>
-                    <h3 class="card-title">Full-Stack Ecosystems</h3>
-                    <p class="card-desc">End-to-end web application development. Whether it's a custom CRM, an advanced enterprise portal, or an SEO-optimized corporate site, we deliver complete solutions.</p>
+                    <h3 class="card-title">Natural Language Processing</h3>
+                    <p class="card-desc">Integration of large language models (LLMs) and custom NLP solutions. From intelligent chatbots and sentiment analysis to automated document processing and data extraction.</p>
+                </div>
+
+                <div class="glass-card">
+                    <div class="icon-wrapper">
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.443.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <h3 class="card-title">AI System Architecture</h3>
+                    <p class="card-desc">Full-stack integration of AI models into your existing software ecosystems. We handle model training, quantization (TensorRT, ONNX), API development, and secure deployment architectures.</p>
                 </div>
 
             </section>
 
-            <section class="tech-footer">
-                <p style="color: #34d399; font-weight: bold; text-transform: uppercase; letter-spacing: 2px;">Web Technologies</p>
-                <div class="tech-list">
-                    <span class="tech-item">React</span>
-                    <span class="tech-item">Django</span>
-                    <span class="tech-item">Go</span>
-                    <span class="tech-item">Supabase</span>
-                    <span class="tech-item">Firebase</span>
-                    <span class="tech-item">Node.js</span>
-                </div>
+            <section class="cta-section">
+                <h2 class="cta-title">Ready to build intelligent systems?</h2>
+                <p style="color: #cbd5e1; margin-bottom: 10px;">Let's discuss how customized AI can accelerate your business.</p>
+                <a href="contact.html" class="btn-primary">Consult With Our Experts</a>
             </section>
 
         </div>
@@ -320,7 +319,7 @@ public class service_web_dev {
         }
 
         openBtn.addEventListener('click', () => sidebar.classList.add('active'));
-
+        
         closeBtn.addEventListener('click', () => {
             sidebar.classList.remove('active');
             closeAllSubmenus();
@@ -343,9 +342,3 @@ public class service_web_dev {
     </script>
 </body>
 </html>
-""";
-
-    public static void main(String[] args) {
-        System.out.println(HTML);
-    }
-}
