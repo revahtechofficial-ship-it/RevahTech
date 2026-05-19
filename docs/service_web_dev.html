@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Development Services | Revah Tech</title>
+
+    <style>
+        /* --- CORE STYLES --- */
+        *{ margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
+
+        body{
+            background-color:#1a3673;
+            background-image:url('images/bg_pattern.png');
+            background-size:cover;
+            background-position:center;
+            background-attachment: fixed;
+            color:white;
+            height:100vh;
+            overflow:hidden;
+            display:flex;
+            flex-direction:column;
+        }
+
+        nav{ display:flex; justify-content:space-between; align-items:center; padding:40px 80px; }
+        .logo{ height:45px; }
+        .menu-container{ display:flex; align-items:center; gap:10px; cursor:pointer; font-size:1.1rem; font-weight:600; }
+        .menu-icon{ height:24px; }
+
+        /* --- BULLETPROOF SIDEBAR --- */
+        #revah-sidebar{ position:fixed; top:0; right:-1000px; width:300px; height:100vh; background:#112554; transition:0.4s ease; z-index:1000; padding:40px; box-shadow:-5px 0 15px rgba(0,0,0,0.5); }
+        #revah-sidebar.active{ right:0; }
+        .sidebar-header{ display:flex; justify-content:flex-end; margin-bottom:60px; }
+        .close-btn{ display:flex; align-items:center; gap:10px; cursor:pointer; font-weight:600; }
+        .revah-links{ list-style:none; display:flex; flex-direction:column; gap:25px; }
+        .revah-links a{ color:white; text-decoration:none; display:flex; align-items:center; gap:10px; font-size:1.1rem; }
+        .revah-links a:hover{ color:#b3c2f2; }
+        .revah-arrow{ display:inline-block; transition:transform 0.3s ease; font-size:0.8rem; }
+        .revah-submenu{ max-height:0; overflow:hidden; opacity:0; visibility:hidden; transition:all 0.3s ease; margin-left:25px; margin-top:0; }
+        .revah-submenu.show-menu{ max-height:300px; opacity:1; visibility:visible; margin-top:10px; }
+        .revah-submenu-list{ list-style:none; display:flex; flex-direction:column; gap:15px; padding:10px 0; }
+        .revah-submenu-list a{ color:#d1d8f0; font-size:1rem; }
+
+        /* --- WEB DEV PAGE SPECIFIC STYLES --- */
+        .service-main {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 80px 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .service-container {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .service-badge {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.5);
+            color: #34d399;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #10b981, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: #cbd5e1;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            line-height: 1.8;
+        }
+
+        /* Capabilities Grid */
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .glass-card {
+            background: rgba(17, 37, 84, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(52, 211, 153, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .icon-wrapper {
+            width: 60px;
+            height: 60px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .icon-wrapper svg {
+            width: 32px;
+            height: 32px;
+            stroke: #34d399;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .card-desc {
+            font-size: 1rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        /* Tech Stack Section */
+        .tech-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .tech-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 20px;
+            opacity: 0.8;
+        }
+
+        .tech-item {
+            font-weight: 600;
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(90deg, #10b981, #0ea5e9);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 40px;
+            transition: all 0.3s ease;
+        }
+
+        @media(max-width: 900px){
+            nav{ padding:25px; }
+            .service-main{ padding:20px; }
+            .hero-title{ font-size: 2.5rem; }
+            #revah-sidebar{ width:100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="revah-sidebar">
+        <div class="sidebar-header">
+            <div class="close-btn" id="revah-close-btn">
+                <img src="images/menu_icon.png" class="menu-icon" alt="Close">
+                <span>Close</span>
+            </div>
+        </div>
+
+        <ul class="revah-links">
+            <li><a href="about.html">About Us</a></li>
+
+            <li>
+                <a href="#" class="revah-toggle" data-target="submenu-services">
+                    <span class="revah-arrow">▶</span> Services
+                </a>
+                <div id="submenu-services" class="revah-submenu">
+                    <ul class="revah-submenu-list">
+                        <li><a href="service_ai.html">Artificial Intelligence</a></li>
+                        <li><a href="service_app_dev.html">App Development</a></li>
+                        <li><a href="service_web_dev.html">Website Development</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <a href="#" class="revah-toggle" data-target="submenu-products">
+                    <span class="revah-arrow">▶</span> Products
+                </a>
+                 <div id="submenu-products" class="revah-submenu">
+                    <ul class="revah-submenu-list">
+                        <li><a href="nexax.html">NexaX</a></li>
+                        <li><a href="nexaschool.html">CRMSchool</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <nav>
+        <a href="index.html">
+            <img src="images/logo.png" class="logo" alt="Revah Tech Logo">
+        </a>
+        <div class="menu-container" id="revah-open-btn">
+            <img src="images/menu_icon.png" class="menu-icon" alt="Menu">
+            <span>Menu</span>
+        </div>
+    </nav>
+
+    <main class="service-main">
+        <div class="service-container">
+
+            <section class="hero-section">
+                <div class="service-badge">Scalable Web Architecture</div>
+                <h1 class="hero-title">Next-Generation <br><span class="text-gradient">Web Platforms</span></h1>
+                <p class="hero-subtitle">We design and develop grand, high-level web experiences. From interactive frontend portfolios with fluid animations to complex backend architectures that power enterprise portals.</p>
+                <a href="contact.html" class="btn-primary">Discuss Your Website</a>
+            </section>
+
+            <section class="capabilities-grid">
+
+                <div class="glass-card">
+                    <div class="icon-wrapper">
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    </div>
+                    <h3 class="card-title">Immersive Frontends</h3>
+                    <p class="card-desc">We build grand, visually stunning interfaces using <b>React</b>. We focus on state-of-the-art UI design, implementing complex animations and highly interactive elements that captivate users.</p>
+                </div>
+
+                <div class="glass-card">
+                    <div class="icon-wrapper">
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>
+                    </div>
+                    <h3 class="card-title">Resilient Backends</h3>
+                    <p class="card-desc">Secure, rapid, and scalable infrastructure. We utilize powerful frameworks like <b>Django</b> and <b>Go</b> alongside modern database integrations like Supabase and Firebase.</p>
+                </div>
+
+                <div class="glass-card">
+                    <div class="icon-wrapper">
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                    </div>
+                    <h3 class="card-title">Full-Stack Ecosystems</h3>
+                    <p class="card-desc">End-to-end web application development. Whether it's a custom CRM, an advanced enterprise portal, or an SEO-optimized corporate site, we deliver complete solutions.</p>
+                </div>
+
+            </section>
+
+            <section class="tech-footer">
+                <p style="color: #34d399; font-weight: bold; text-transform: uppercase; letter-spacing: 2px;">Web Technologies</p>
+                <div class="tech-list">
+                    <span class="tech-item">React</span>
+                    <span class="tech-item">Django</span>
+                    <span class="tech-item">Go</span>
+                    <span class="tech-item">Supabase</span>
+                    <span class="tech-item">Firebase</span>
+                    <span class="tech-item">Node.js</span>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sidebar = document.getElementById('revah-sidebar');
+        const openBtn = document.getElementById('revah-open-btn');
+        const closeBtn = document.getElementById('revah-close-btn');
+        const toggles = document.querySelectorAll('.revah-toggle');
+        const allSubmenus = document.querySelectorAll('.revah-submenu');
+        const allArrows = document.querySelectorAll('.revah-arrow');
+
+        function closeAllSubmenus(){
+            allSubmenus.forEach(menu => menu.classList.remove('show-menu'));
+            allArrows.forEach(arrow => arrow.style.transform = 'rotate(0deg)');
+        }
+
+        openBtn.addEventListener('click', () => sidebar.classList.add('active'));
+
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            closeAllSubmenus();
+        });
+
+        toggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetMenu = document.getElementById(toggle.getAttribute('data-target'));
+                const arrow = toggle.querySelector('.revah-arrow');
+                const isOpen = targetMenu.classList.contains('show-menu');
+                closeAllSubmenus();
+                if(!isOpen){
+                    targetMenu.classList.add('show-menu');
+                    arrow.style.transform = 'rotate(90deg)';
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
+
